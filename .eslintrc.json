@@ -1,0 +1,41 @@
+{
+	"root": true,
+	"env": {
+		"browser": true,
+		"es2021": true
+	},
+	"extends": [
+		"eslint:recommended",
+		"@nuxtjs/eslint-config-typescript",
+		"plugin:vue/recommended",
+		"plugin:nuxt/recommended"
+	],
+	"plugins": [ ],
+	"rules": {
+		"no-tabs": 0,
+		"indent": [
+			"error",
+			"tab"
+		],
+		"linebreak-style": [
+			"error",
+			"unix"
+		],
+		"quotes": [
+			"error",
+			"double"
+		],
+		"semi": [
+			"error",
+			"always"
+		],
+		"vue/html-indent": [ "error", "tab", {
+				"attribute": 1,
+				"baseIndent": 1,
+				"closeBracket": 0,
+				"alignAttributesVertically": true,
+				"ignores": [ ]
+			} ],
+		"vue/no-multiple-template-root": 0
+	}
+}
