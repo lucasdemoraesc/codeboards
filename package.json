@@ -1,22 +1,22 @@
 {
-	"name": "nuxt-app",
+	"name": "codeboards",
+	"version": "0.0.1",
+	"license": "AGPL-3.0-or-later",
+	"author": "Lucas Moraes",
 	"private": true,
+	"workspaces": [
+		"app",
+		"packages/*"
+	],
 	"scripts": {
-		"build": "nuxt build",
-		"dev": "nuxt dev",
-		"generate": "nuxt generate",
-		"preview": "nuxt preview",
-		"postinstall": "nuxt prepare",
-		"lint": "eslint --ext .ts,.js,.vue ."
+		"dev:app": "yarn docker:up && yarn workspace @codeboards/app dev",
+		"docker:up": "docker compose up -d",
+		"docker:purge": "docker compose down --volumes --remove-orphans",
+		"db:setup": "yarn workspace @codeboards/prisma setup",
+		"db:inspect": "yarn workspace @codeboards/prisma dev",
+		"db:migrate": "yarn docker:up && yarn workspace @codeboards/prisma migrate:dev",
+		"dev:setup": "yarn docker:up && yarn db:setup",
+		"lint": "yarn workspace @codeboards/app lint"
 	},
-	"devDependencies": {
-		"@nuxtjs/eslint-config-typescript": "^12.0.0",
-		"@types/node": "^18.15.11",
-		"@typescript-eslint/parser": "^5.58.0",
-		"eslint": "^8.38.0",
-		"eslint-plugin-nuxt": "^4.0.0",
-		"nuxt": "^3.4.1",
-		"typescript": "^5.0.4"
-	},
-	"dependencies": {}
+	"packageManager": "yarn@1.22.19"
 }

@@ -12,6 +12,6 @@ tab_width = 4
 trim_trailing_whitespace = true
 insert_final_newline = true
 
-[*.{html,vue,json}]
+[*.{html,vue,tsx,json,prisma,sql,xml}]
 indent_size = 2
 tab_width = 2
