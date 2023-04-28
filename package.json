@@ -9,13 +9,15 @@
 		"packages/*"
 	],
 	"scripts": {
-		"dev:app": "yarn docker:up && yarn workspace @codeboards/app dev",
 		"docker:up": "docker compose up -d",
 		"docker:purge": "docker compose down --volumes --remove-orphans",
 		"db:setup": "yarn workspace @codeboards/prisma setup",
 		"db:inspect": "yarn workspace @codeboards/prisma dev",
 		"db:migrate": "yarn docker:up && yarn workspace @codeboards/prisma migrate:dev",
+		"db:deploy": "yarn workspace @codeboards/prisma migrate:deploy",
 		"dev:setup": "yarn docker:up && yarn db:setup",
+		"dev:app": "yarn docker:up && yarn workspace @codeboards/app dev",
+		"build:app": "yarn workspace @codeboards/app build",
 		"lint": "yarn workspace @codeboards/app lint"
 	},
 	"packageManager": "yarn@1.22.19"
