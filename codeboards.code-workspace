@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "app",
+			"name": "app"
+		},
+		{
+			"path": "packages/prisma"
+		},
+		{
+			"path": ".",
+			"name": "root"
+		}
+	]
+}
