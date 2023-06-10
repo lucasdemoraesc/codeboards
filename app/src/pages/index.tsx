@@ -1,8 +1,9 @@
+import DemoContainer from "@/features/DemoContainer";
 import { GetServerSidePropsContext } from "next";
 import { getSession } from "next-auth/react";
 
-function RedirectPage() {
-	return;
+function IndexPage() {
+	return <DemoContainer />;
 }
 
 export const getServerSideProps = async (
@@ -11,8 +12,7 @@ export const getServerSideProps = async (
 	const session = await getSession(context);
 	if (!session?.user)
 		return { redirect: { permanent: false, destination: "/signin" } };
-
-	return { redirect: { permanent: false, destination: "/projects" } };
+	return { props: { session } };
 };
 
-export default RedirectPage;
+export default IndexPage;

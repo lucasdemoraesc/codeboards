@@ -1,11 +1,11 @@
 import { ColorModeSwicther } from "@/components/ColorModeSwitcher";
 import { Seo } from "@/components/Seo";
-import withAuth, { withAuthProps } from "@/hooks/withUser";
+import withAuth from "@/hooks/withAuth";
 import { Box, Button, Card, CardBody, CardFooter, CardHeader, Image, Text, VStack } from "@chakra-ui/react";
 import { signOut } from "next-auth/react";
 import { useState } from "react";
 
-const ProjectsPage = ({ user }: withAuthProps) => {
+const ProjectsContainer = () => {
 	const [loading, setLoading] = useState(true);
 
 	setTimeout(() => setLoading(false), 5000);
@@ -36,12 +36,12 @@ const ProjectsPage = ({ user }: withAuthProps) => {
 					<Image
 						borderRadius="full"
 						boxSize="120px"
-						src={user?.image || ""}
+						src="https://cataas.com/cat"
 						alt="Dan Abramov"
 					/>
 				</CardHeader>
 				<CardBody>
-					<Text data-testid="authenticated">Hello {user?.name}</Text>
+					<Text data-testid="authenticated">Hello!</Text>
 				</CardBody>
 				<CardFooter>
 					<Button
@@ -57,4 +57,4 @@ const ProjectsPage = ({ user }: withAuthProps) => {
 	);
 };
 
-export default withAuth(ProjectsPage);
+export default withAuth(ProjectsContainer);

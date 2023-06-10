@@ -3,7 +3,7 @@ import { Seo } from "@/components/Seo";
 import { Box, Heading, Text, VStack } from "@chakra-ui/react";
 import { SignInForm } from "./SignInForm";
 
-export const SignInPage = () => {
+export const SignInContainer = () => {
 
 	return (
 		<VStack spacing={4} h="100vh" justifyContent="center">

@@ -6,10 +6,10 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 
 type Props = {
-  providers:
-    | Record<LiteralUnion<BuiltInProviderType, string>, ClientSafeProvider>
-    | undefined
-}
+	providers:
+	| Record<LiteralUnion<BuiltInProviderType, string>, ClientSafeProvider>
+	| undefined;
+};
 
 export const SocialLoginButtons = ({ providers }: Props) => {
 	const { query } = useRouter();
@@ -20,7 +20,7 @@ export const SocialLoginButtons = ({ providers }: Props) => {
 		setAuthLoading(provider);
 		signIn(provider, {
 			callbackUrl:
-        query.callbackUrl?.toString() ?? "/projects"
+				query.callbackUrl?.toString() ?? "/"
 		});
 		setTimeout(() => setAuthLoading(undefined), 3000);
 	};

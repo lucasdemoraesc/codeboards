@@ -109,11 +109,17 @@ const Button = defineStyleConfig({
 				}
 			};
 		},
-		outline: {
-			bg: "transparent"
+		outline: ({ colorMode, colorScheme }) => {
+			return {
+				bg: "transparent",
+				color: colorMode === "dark" ? `${colorScheme}.300` : `${colorScheme}.600`
+			};
 		},
-		ghost: {
-			bg: "transparent"
+		ghost: ({ colorMode, colorScheme }) => {
+			return {
+				bg: "transparent",
+				color: colorMode === "dark" ? `${colorScheme}.300` : `${colorScheme}.600`
+			};
 		}
 	}
 });
@@ -192,8 +198,15 @@ const components = {
 
 const styles = {
 	global: (props: StyleFunctionProps) => ({
+		html: {
+			fontSize: "16px"
+		},
 		body: {
-			bg: mode("white", "gray.900")(props)
+			bg: mode("white", "gray.900")(props),
+			color: mode("gray.600", "gray.300")(props)
+		},
+		"h1, h2, h3, h4, h5, h6": {
+			color: mode("gray.700", "gray.200")(props)
 		}
 	})
 };

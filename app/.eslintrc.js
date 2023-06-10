@@ -41,6 +41,7 @@ module.exports = {
 			"exports": "never",
 			"functions": "never"
 		}],
-		"react/jsx-filename-extension": [1, { "extensions": [".jsx", ".tsx"] }]
+		"react/jsx-filename-extension": [1, { "extensions": [".jsx", ".tsx"] }],
+		"@typescript-eslint/no-non-null-assertion": "off"
 	}
 };

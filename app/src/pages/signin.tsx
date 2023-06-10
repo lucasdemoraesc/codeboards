@@ -1,5 +1,11 @@
-import { SignInPage } from "@/features/signIn/SignInPage";
+import { SignInContainer } from "@/features/signIn/SignInContainer";
+import { ReactElement } from "react";
+import { NextPageWithLayout } from "./_app";
 
-export default function Page() {
-	return <SignInPage />;
-}
+const SignInPage: NextPageWithLayout = () => {
+	return <SignInContainer />;
+};
+
+SignInPage.getLayout = (page: ReactElement) => page;
+
+export default SignInPage;
