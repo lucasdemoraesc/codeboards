@@ -1,6 +1,18 @@
 import { AngleRightIcon, LogoutIcon } from "@/components/Icons";
-import { useUser } from "@/services/user";
-import { Avatar, HStack, Menu, MenuButton, MenuItem, MenuList, Skeleton, SkeletonCircle, SkeletonText, Text, useColorModeValue } from "@chakra-ui/react";
+import { useUser } from "@/features/account/hooks/useUser";
+import {
+	Avatar,
+	HStack,
+	Menu,
+	MenuButton,
+	MenuItem,
+	MenuList,
+	Skeleton,
+	SkeletonCircle,
+	SkeletonText,
+	Text,
+	useColorModeValue
+} from "@chakra-ui/react";
 import { signOut } from "next-auth/react";
 
 export const SidebarFooter = () => {

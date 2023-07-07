@@ -1,10 +1,10 @@
-import DemoContainer from "@/features/DemoContainer";
+import UnderConstructionContainer from "@/features/UnderConstructionContainer";
 import { GetServerSidePropsContext } from "next";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]";
 
 function FavoritesPage() {
-	return <DemoContainer />;
+	return <UnderConstructionContainer title="Favorites" />;
 }
 
 export const getServerSideProps = async (

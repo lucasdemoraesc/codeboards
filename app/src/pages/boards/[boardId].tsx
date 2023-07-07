@@ -1,7 +1,8 @@
+import UnderConstructionContainer from "@/features/UnderConstructionContainer";
 
 function BoardPage() {
 	return (
-		<div>[board] Oi, meu chapa 🦨</div>
+		<UnderConstructionContainer title="Board Page" />
 	);
 }
 

@@ -1,8 +1,8 @@
 import "@/assets/styles/routerProgressBar.css";
+import { UserProvider } from "@/features/account/UserProvider";
 import { useRouterProgressBar } from "@/hooks/useRouterProgressBar";
 import DefaultLayout from "@/layouts/DefaultLayout";
 import { customTheme } from "@/libs/customTheme";
-import { UserProvider } from "@/providers/UserProvider";
 import { ChakraProvider } from "@chakra-ui/react";
 import { NextPage } from "next";
 import { SessionProvider } from "next-auth/react";

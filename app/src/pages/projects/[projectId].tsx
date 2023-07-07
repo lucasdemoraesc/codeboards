@@ -1,5 +1,7 @@
+import UnderConstructionContainer from "@/features/UnderConstructionContainer";
+
 export default function ProjectPage() {
 	return (
-		<div>[project] Oi, meu chapa 🦨</div>
+		<UnderConstructionContainer title="Project Page" />
 	);
 }
