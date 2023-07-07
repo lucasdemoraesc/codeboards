@@ -203,6 +203,10 @@ const components = {
 
 const styles = {
 	global: (props: StyleFunctionProps) => ({
+		"*::selection": {
+			bg: mode("gray.300", "gray.300")(props),
+			color: mode("blue.800", "blue.800")(props)
+		},
 		html: {
 			fontSize: "16px"
 		},

@@ -1,11 +1,11 @@
 import { AngleRightIcon, LogoutIcon } from "@/components/Icons";
 import { useUser } from "@/services/user";
-import { Avatar, HStack, Menu, MenuButton, MenuItem, MenuList, Text, useColorModeValue } from "@chakra-ui/react";
+import { Avatar, HStack, Menu, MenuButton, MenuItem, MenuList, Skeleton, SkeletonCircle, SkeletonText, Text, useColorModeValue } from "@chakra-ui/react";
 import { signOut } from "next-auth/react";
 
 export const SidebarFooter = () => {
 
-	const { user } = useUser();
+	const { user, isLoading } = useUser();
 
 	return (
 		<Menu
@@ -31,17 +31,22 @@ export const SidebarFooter = () => {
 					alignItems={"center"}
 					gap={2}
 				>
-					<Avatar
-						src={user?.image || ""}
-						name={user?.name || user?.email || "User"}
-						size={"sm"}
-					/>
-					<Text
-						isTruncated
-					>
-						{user?.name || user?.email || "User options"}
-					</Text>
-					<AngleRightIcon />
+					{isLoading ?
+						<>
+							<SkeletonCircle></SkeletonCircle>
+							<SkeletonText skeletonHeight={3} width={"28"} noOfLines={1}></SkeletonText>
+							<Skeleton height={3} width={3} noOfLines={1}></Skeleton>
+						</>
+						: <>
+							<Avatar
+								src={user?.image || ""}
+								name={user?.name || user?.email || "User"}
+								size={"sm"}
+							/>
+							<Text isTruncated>{user?.name || user?.email || "User options"}</Text>
+							<AngleRightIcon />
+						</>
+					}
 				</HStack>
 			</MenuButton>
 

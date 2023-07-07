@@ -7,7 +7,7 @@ export const userContext = createContext<{
 	user?: User;
 	isLoading: boolean;
 	// eslint-disable-next-line indent
-}>({ isLoading: false });
+}>({ isLoading: true });
 
 export const UserProvider = ({ children }: { children: ReactNode; }) => {
 	const router = useRouter();
@@ -46,7 +46,7 @@ export const UserProvider = ({ children }: { children: ReactNode; }) => {
 		<userContext.Provider
 			value={{
 				user,
-				isLoading: status === "loading"
+				isLoading: status === "loading" || !user
 			}}
 		>
 			{children}

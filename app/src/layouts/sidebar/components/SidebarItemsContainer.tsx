@@ -1,7 +1,7 @@
 import { Box, SpaceProps } from "@chakra-ui/react";
 import { PropsWithChildren } from "react";
 
-export const SidebarItensContainer = (props: PropsWithChildren<{
+export const SidebarItemsContainer = (props: PropsWithChildren<{
 	paddingX?: SpaceProps["padding"],
 	paddingY?: SpaceProps["padding"],
 }>) => {
