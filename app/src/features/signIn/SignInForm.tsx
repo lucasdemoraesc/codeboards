@@ -24,7 +24,7 @@ export const SignInForm = () => {
 
 	useEffect(() => {
 		if (status === "authenticated") {
-			router.replace(router.query.callbackUrl?.toString() ?? "/projects");
+			router.replace(router.query.callbackUrl?.toString() ?? "/");
 			return;
 		}
 		(async () => {

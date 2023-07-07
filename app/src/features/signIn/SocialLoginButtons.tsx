@@ -5,13 +5,13 @@ import { ClientSafeProvider, LiteralUnion, signIn, useSession } from "next-auth/
 import { useRouter } from "next/router";
 import { useState } from "react";
 
-type Props = {
+type SocialLoginButtonsProps = {
 	providers:
 	| Record<LiteralUnion<BuiltInProviderType, string>, ClientSafeProvider>
 	| undefined;
 };
 
-export const SocialLoginButtons = ({ providers }: Props) => {
+export const SocialLoginButtons = ({ providers }: SocialLoginButtonsProps) => {
 	const { query } = useRouter();
 	const { status } = useSession();
 	const [authLoading, setAuthLoading] = useState<LiteralUnion<BuiltInProviderType, string>>();

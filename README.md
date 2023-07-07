@@ -1,6 +1,6 @@
 <div>
     <h1 align="center">
-        <img src="./app/public/codeboards-logo.svg" width="24" draggable=false>
+        <img src="./app/public/favicon.svg" width="24" draggable=false>
         Codeboards
     </h1>
     <h3 align="center">Simple task boards for programming projects. That's it.</h3>
@@ -48,7 +48,7 @@
    ```
    _Available at **[`http://localhost:3000`](http://localhost:3000)**_
 
-7. [Optionnal] Run Prisma Studio to access the database
+7. [Optional] Run Prisma Studio to access the database
 
     ```sh
    yarn db:inspect

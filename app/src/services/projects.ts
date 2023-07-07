@@ -4,9 +4,16 @@ import { fetcher, sendRequest } from "./utils";
 
 type ProjectOmited = Omit<Project, "createdAt" | "updatedAt" | "ownerId">;
 
-export const useProjects = ({ onError }: { onError: (error: Error) => void; }) => {
+export const useProjects = ({
+	withBoards,
+	onError
+}: {
+	withBoards?: boolean,
+	onError: (error: Error) => void;
+}) => {
 
-	const { data, error, mutate } = useSWR<{ projects: Project[]; }, Error>("/api/projects", fetcher);
+	const params = new URLSearchParams(withBoards ? { withBoards: "true" } : undefined);
+	const { data, error, mutate } = useSWR<{ projects: Project[]; }, Error>(`/api/projects?${params}`, fetcher);
 	if (error) onError(error);
 
 	return {

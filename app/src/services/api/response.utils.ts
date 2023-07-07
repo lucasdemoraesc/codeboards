@@ -1,8 +1,5 @@
 import { NextApiResponse } from "next";
 
-export const noContent = (res: NextApiResponse, customMessage?: string) =>
-	res.status(204).json({ message: customMessage ?? "No content" });
-
 export const methodNotAllowed = (res: NextApiResponse, customMessage?: string) =>
 	res.status(405).json({ message: customMessage ?? "Method not allowed" });
 

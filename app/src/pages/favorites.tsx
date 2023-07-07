@@ -3,7 +3,7 @@ import { GetServerSidePropsContext } from "next";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]";
 
-function IndexPage() {
+function FavoritesPage() {
 	return <DemoContainer />;
 }
 
@@ -15,10 +15,10 @@ export const getServerSideProps = async (
 		return {
 			redirect: {
 				permanent: false,
-				destination: "/signin"
+				destination: "/signin?callbackUrl=/favorites"
 			}
 		};
 	return { props: { session } };
 };
 
-export default IndexPage;
+export default FavoritesPage;

@@ -8,16 +8,6 @@ export const svgIconBaseProps: IconProps = {
 	strokeLinejoin: "round"
 };
 
-export const CodeBoardsLinearIcon = (props: IconProps) => (
-	<Icon viewBox="0 0 24 24" {...svgIconBaseProps} {...props}>
-		<g fill="none" stroke="currentColor" stroke-width="1.5">
-			<path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13v-2Z" />
-			<path stroke-linecap="round" d="M15 21V3" />
-			<path stroke-linecap="round" stroke-linejoin="round" d="m6 14l-1 1l1 1m4.5 0l1 1l-1 1M9 14l-1.5 4" />
-		</g>
-	</Icon>
-);
-
 export const ExternalLinkIcon = (props: IconProps) => (
 	<Icon viewBox="0 0 24 24" {...svgIconBaseProps} {...props}>
 		<path d="M12 6H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6m-7 1l9-9m-5 0h5v5" />
@@ -46,12 +36,75 @@ export const GithubLogo = (props: IconProps) => (
 
 export const DayIcon = (props: IconProps) => (
 	<Icon viewBox="0 0 24 24" {...svgIconBaseProps} {...props}>
-		<path d="M8 12a4 4 0 1 0 8 0a4 4 0 1 0-8 0m-4 0h.01M12 4v.01M20 12h.01M12 20v.01M6.31 6.31L6.3 6.3m11.41.01l-.01-.01m0 11.4l.01.01M6.3 17.7l.01.01" />
+		{/* <path d="M14.828 14.828a4 4 0 1 0-5.656-5.656a4 4 0 0 0 5.656 5.656zm-8.485 2.829l-1.414 1.414M6.343 6.343L4.929 4.929m12.728 1.414l1.414-1.414m-1.414 12.728l1.414 1.414M4 12H2m10-8V2m8 10h2m-10 8v2" /> */}
+		<circle cx="12" cy="12" r="5" />
+		<path d="M12 2v2m0 16v2M4 12H2m20 0h-2m-.222-7.777l-2.222 2.031M4.222 4.223l2.222 2.031m0 11.302l-2.222 2.222m15.556-.001l-2.222-2.222" />
 	</Icon>
 );
 
 export const NightIcon = (props: IconProps) => (
 	<Icon viewBox="0 0 24 24" {...svgIconBaseProps} {...props}>
 		<path d="M12 3h.393a7.5 7.5 0 0 0 7.92 12.446A9 9 0 1 1 12 2.992z" />
+	</Icon>
+);
+
+export const OverviewIcon = (props: IconProps) => (
+	<Icon viewBox="0 0 24 24" {...svgIconBaseProps} {...props}>
+		<path d="M6 6.878V6a2.25 2.25 0 0 1 2.25-2.25h7.5A2.25 2.25 0 0 1 18 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 0 0 4.5 9v.878m13.5-3A2.25 2.25 0 0 1 19.5 9v.878m0 0a2.246 2.246 0 0 0-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0 1 21 12v6a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 18v-6c0-.98.626-1.813 1.5-2.122" />
+	</Icon>
+);
+
+export const StarIcon = (props: IconProps) => (
+	<Icon viewBox="0 0 24 24" {...svgIconBaseProps} {...props}>
+		<path d="m12 17.75l-6.172 3.245l1.179-6.873l-5-4.867l6.9-1l3.086-6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" />
+	</Icon>
+);
+
+export const KanbanBoardIcon = (props: IconProps) => (
+	<Icon viewBox="0 0 24 24" {...svgIconBaseProps} {...props}>
+		<path d="M4 4h6m4 0h6M4 10a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm10 0a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2z" />
+	</Icon>
+);
+
+export const AngleDownIcon = (props: IconProps) => (
+	<Icon viewBox="0 0 24 24" {...svgIconBaseProps} {...props}>
+		{/* <path d="m6 9l6 6l6-6" /> TablerIcons */}
+		<path d="m19.5 8.25l-7.5 7.5l-7.5-7.5" /> {/* HereIcons heroicons:chevron-down */}
+	</Icon>
+);
+
+export const AngleRightIcon = (props: IconProps) => (
+	<Icon viewBox="0 0 24 24" {...svgIconBaseProps} {...props}>
+		<path d="m8.25 4.5l7.5 7.5l-7.5 7.5" />
+	</Icon>
+);
+
+export const DoubleAngleRightIcon = (props: IconProps) => (
+	<Icon viewBox="0 0 24 24" {...svgIconBaseProps} {...props}>
+		<path d="m7 7l5 5l-5 5m6-10l5 5l-5 5" />
+	</Icon>
+);
+
+export const DotIcon = (props: IconProps) => (
+	<Icon viewBox="0 0 24 24" {...svgIconBaseProps} {...props} stroke={"unset"}>
+		<path fill="currentColor" d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10s10-4.47 10-10S17.53 2 12 2z" />
+	</Icon>
+);
+
+export const ThreeDotsIcon = (props: IconProps) => (
+	<Icon viewBox="0 0 256 256" {...svgIconBaseProps} {...props}>
+		<path fill="currentColor" d="M156 128a28 28 0 1 1-28-28a28 28 0 0 1 28 28ZM48 100a28 28 0 1 0 28 28a28 28 0 0 0-28-28Zm160 0a28 28 0 1 0 28 28a28 28 0 0 0-28-28Z" />
+	</Icon>
+);
+
+export const PlusIcon = (props: IconProps) => (
+	<Icon viewBox="0 0 24 24" {...svgIconBaseProps} {...props}>
+		<path d="M12 4.5v15m7.5-7.5h-15" />
+	</Icon>
+);
+
+export const LogoutIcon = (props: IconProps) => (
+	<Icon viewBox="0 0 24 24" {...svgIconBaseProps} {...props}>
+		<path d="M13 12h9m0 0l-3.333-4M22 12l-3.333 4M14 7V5.174a2 2 0 0 0-2.166-1.993l-8 .666A2 2 0 0 0 2 5.84v12.32a2 2 0 0 0 1.834 1.993l8 .667A2 2 0 0 0 14 18.826V17" />
 	</Icon>
 );

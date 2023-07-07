@@ -1,11 +1,16 @@
+
 export const fetcher = async (input: RequestInfo, init?: RequestInit) => {
 	const res = await fetch(input, init);
 	return res.json();
 };
 
 export const isMobile =
-	typeof window !== undefined
+	typeof window !== "undefined"
 	&& window.matchMedia("only screen and (max-width: 768px)").matches;
+
+export const isTruncated =
+	(element?: HTMLElement) =>
+		element && (element.offsetWidth < element.scrollWidth);
 
 export const sendRequest = async <ResponseData>({
 	url,

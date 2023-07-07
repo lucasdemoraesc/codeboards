@@ -1,7 +1,8 @@
 import "@/assets/styles/routerProgressBar.css";
-import Layout from "@/components/Layout";
 import { useRouterProgressBar } from "@/hooks/useRouterProgressBar";
+import DefaultLayout from "@/layouts/DefaultLayout";
 import { customTheme } from "@/libs/customTheme";
+import { UserProvider } from "@/providers/UserProvider";
 import { ChakraProvider } from "@chakra-ui/react";
 import { NextPage } from "next";
 import { SessionProvider } from "next-auth/react";
@@ -18,13 +19,15 @@ type AppPropsWithLayout = AppProps & {
 
 function App({ Component, pageProps }: AppPropsWithLayout) {
 
-	const getLayout = Component.getLayout ?? Layout;
+	const getLayout = Component.getLayout ?? DefaultLayout;
 	useRouterProgressBar();
 
-	return getLayout(
+	return (
 		<ChakraProvider theme={customTheme}>
-			<SessionProvider>
-				<Component {...pageProps} />
+			<SessionProvider session={pageProps.session}>
+				<UserProvider>
+					{getLayout(<Component {...pageProps} />)}
+				</UserProvider>
 			</SessionProvider>
 		</ChakraProvider>
 	);

@@ -1,7 +1,4 @@
-import { User } from "next-auth";
-import { useSession } from "next-auth/react";
+import { userContext } from "@/providers/UserProvider";
+import { useContext } from "react";
 
-export const useUser = (): User | undefined => {
-	const { data } = useSession();
-	return data?.user as User | undefined;
-};
+export const useUser = () => useContext(userContext);

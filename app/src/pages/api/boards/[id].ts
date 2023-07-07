@@ -1,6 +1,6 @@
 import { Board } from ".prisma/client";
 import prisma from "@/libs/prisma";
-import { notAuthenticated } from "@/services/api/utils";
+import { notAuthenticated } from "@/services/api/response.utils";
 import { NextApiRequest, NextApiResponse } from "next";
 import { getSession } from "next-auth/react";
 

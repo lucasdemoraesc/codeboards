@@ -8,7 +8,7 @@ export const DividerWithText = (props: FlexProps) => {
 			<Divider borderColor="currentcolor" />
 			<Text
 				as="span"
-				px="3"
+				paddingX="3"
 				color={useColorModeValue("gray.600", "gray.400")}
 				fontWeight="medium"
 			>

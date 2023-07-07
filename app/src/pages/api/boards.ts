@@ -1,6 +1,6 @@
 import { Board, User } from ".prisma/client";
 import prisma from "@/libs/prisma";
-import { methodNotAllowed, noContent, notAuthenticated } from "@/services/api/utils";
+import { methodNotAllowed, notAuthenticated } from "@/services/api/response.utils";
 import { NextApiRequest, NextApiResponse } from "next";
 import { getSession } from "next-auth/react";
 
@@ -19,9 +19,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 				projectId
 			}
 		});
-		return boards && boards.length > 0
-			? res.send({ boards })
-			: noContent(res, "No boards found");
+
+		return res.send({ boards });
 	}
 
 	if (req.method === "POST") {

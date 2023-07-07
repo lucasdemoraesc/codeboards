@@ -1,29 +1,28 @@
-import { IconButton, ResponsiveValue, Tooltip, useColorMode } from "@chakra-ui/react";
+import { PlacementWithLogical, TextProps, Tooltip, useColorMode, useColorModeValue } from "@chakra-ui/react";
+import { Clickable } from "./Clickable";
 import { DayIcon, NightIcon } from "./Icons";
 
 type IconSwitcherProps = {
-	size?: ResponsiveValue<(string & object) | "sm" | "md" | "lg" | "xs"> | undefined,
+	size?: TextProps["fontSize"];
 	showTooltip?: boolean,
-}
+	tooltipPosition?: PlacementWithLogical;
+};
 
 export const ColorModeSwicther = (props: IconSwitcherProps) => {
-	const { colorMode, toggleColorMode } = useColorMode();
+	const { toggleColorMode } = useColorMode();
 
 	return (
 		<Tooltip
 			aria-label="Switch color mode"
-			label={`Switch to ${colorMode === "light" ? "dark" : "light"} mode`}
-			placement="auto"
+			label={`Switch to ${useColorModeValue("dark", "light")} mode`}
+			placement={props.tooltipPosition || "auto"}
 			isDisabled={!props.showTooltip}
 		>
-			<IconButton
-				aria-label="Switch color mode"
+			<Clickable
 				onClick={toggleColorMode}
-				variant="ghost"
-				isRound={true}
-				size={props.size}
-				icon={colorMode === "light" ? <DayIcon /> : <NightIcon /> }
-			/>
-		</Tooltip>
+			>
+				{useColorModeValue(<DayIcon fontSize={props.size} />, <NightIcon fontSize={props.size} />)}
+			</Clickable>
+		</Tooltip >
 	);
 };

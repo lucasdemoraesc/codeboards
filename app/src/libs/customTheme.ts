@@ -191,7 +191,12 @@ const components = {
 	},
 	Tooltip: {
 		baseStyle: {
-			rounded: "md"
+			rounded: "md",
+			fontSize: "xs"
+		},
+		defaultProps: {
+			openDelay: 200,
+			placement: "auto"
 		}
 	}
 };
@@ -211,7 +216,6 @@ const styles = {
 	})
 };
 
-// TODO: Atualizar tema customizado
 export const customTheme = extendTheme({
 	colors,
 	fonts,
