@@ -28,7 +28,8 @@ export const SidebarItem = (props: {
 			display={"flex"}
 			alignItems="center"
 			gap={2}
-			paddingX={level === 1 ? 3 : 6}
+			paddingLeft={level === 1 ? 3 : 6}
+			paddingRight={3}
 			paddingY={1.5}
 			borderRadius={"base"}
 			transition="background-color .2s ease"

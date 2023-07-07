@@ -1,9 +1,10 @@
 import { Board } from ".prisma/client";
 import { KanbanBoardIcon } from "@/components/Icons";
-import { Box } from "@chakra-ui/react";
 import { SidebarAddItem } from "./components/SidebarAddItem";
 import { SidebarItem } from "./components/SidebarItem";
-import { SidebarItensContainer } from "./components/SidebarItensContainer";
+import { SidebarItemsContainer } from "./components/SidebarItemsContainer";
+import { SidebarItemsEmpty } from "./components/SidebarItemsEmpty";
+import { SidebarItemsSkeleton } from "./components/SidebarItemsSkeleton";
 
 export const SidebarBoards = ({
 	boards,
@@ -12,26 +13,25 @@ export const SidebarBoards = ({
 	boards?: Board[];
 	isLoading: boolean;
 }) => {
-	return (
-		<SidebarItensContainer>
-			<SidebarAddItem
-				title="Boards"
-				itemType="board"
-				onClick={() => undefined}
-			></SidebarAddItem>
 
-			{isLoading ? (
-				<Box paddingY={1.5} paddingX={3}>Loading...</Box>
-			) : (
-				boards?.map((board) => (
+	return (
+		<SidebarItemsContainer>
+			<SidebarItemsSkeleton isLoading={isLoading}>
+				<SidebarAddItem
+					title="Boards"
+					itemType="board"
+					onClick={() => undefined}
+				></SidebarAddItem>
+
+				{boards && boards.length > 0 ? boards?.map((board) => (
 					<SidebarItem
 						key={board.id}
 						href={`/boards/${board.id}`}
 						label={board.name}
 						icon={<KanbanBoardIcon />}
 					></SidebarItem>
-				))
-			)}
-		</SidebarItensContainer>
+				)) : <SidebarItemsEmpty itemType="boards" onAdd={() => undefined} />}
+			</SidebarItemsSkeleton>
+		</SidebarItemsContainer>
 	);
 };

@@ -1,12 +1,13 @@
 import { Project } from ".prisma/client";
 import { Clickable } from "@/components/Clickable";
 import { AngleRightIcon, DotIcon } from "@/components/Icons";
-import { Box } from "@chakra-ui/react";
 import { Board } from "@codeboards/prisma";
 import React from "react";
 import { SidebarAddItem } from "./components/SidebarAddItem";
 import { SidebarItem } from "./components/SidebarItem";
-import { SidebarItensContainer } from "./components/SidebarItensContainer";
+import { SidebarItemsContainer } from "./components/SidebarItemsContainer";
+import { SidebarItemsEmpty } from "./components/SidebarItemsEmpty";
+import { SidebarItemsSkeleton } from "./components/SidebarItemsSkeleton";
 
 type ProjectWithBoards = Project & {
 	boards?: Board[];
@@ -21,17 +22,15 @@ export const SidebarProjects = ({
 }) => {
 
 	return (
-		<SidebarItensContainer>
-			<SidebarAddItem
-				title="Projects"
-				itemType="project"
-				onClick={() => undefined}
-			></SidebarAddItem>
+		<SidebarItemsContainer>
+			<SidebarItemsSkeleton numberOfItems={2} isLoading={isLoading}>
+				<SidebarAddItem
+					title="Projects"
+					itemType="project"
+					onClick={() => undefined}
+				></SidebarAddItem>
 
-			{isLoading ? (
-				<Box paddingY={1.5} paddingX={3}>Loading...</Box>
-			) : (
-				projects?.map((project) => (
+				{projects && projects.length > 0 ? projects?.map((project) => (
 					<React.Fragment key={project.id}>
 						<SidebarItem
 							key={project.id}
@@ -58,8 +57,8 @@ export const SidebarProjects = ({
 								></SidebarItem>)
 							)}
 					</React.Fragment>
-				))
-			)}
-		</SidebarItensContainer>
+				)) : <SidebarItemsEmpty itemType="projects" onAdd={() => undefined} />}
+			</SidebarItemsSkeleton>
+		</SidebarItemsContainer>
 	);
 };

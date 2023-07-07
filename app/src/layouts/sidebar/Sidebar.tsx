@@ -5,7 +5,7 @@ import { SidebarBoards } from "./SidebarBoards";
 import { SidebarProjects } from "./SidebarProjects";
 import { SidebarFooter } from "./components/SidebarFooter";
 import { SidebarItem } from "./components/SidebarItem";
-import { SidebarItensContainer } from "./components/SidebarItensContainer";
+import { SidebarItemsContainer } from "./components/SidebarItemsContainer";
 import { SidebarLogo } from "./components/SidebarLogo";
 
 export const Sidebar = ({
@@ -34,7 +34,7 @@ export const Sidebar = ({
 		>
 			<SidebarLogo />
 
-			<SidebarItensContainer>
+			<SidebarItemsContainer>
 				<SidebarItem
 					href="/"
 					label="Overview"
@@ -45,7 +45,7 @@ export const Sidebar = ({
 					label="Favorites"
 					icon={<StarIcon />}
 				></SidebarItem>
-			</SidebarItensContainer>
+			</SidebarItemsContainer>
 
 			<SidebarProjects
 				projects={projects}

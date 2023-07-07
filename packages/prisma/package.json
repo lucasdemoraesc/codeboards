@@ -13,12 +13,12 @@
 		"setup": "yarn generate && yarn migrate:deploy"
 	},
 	"dependencies": {
-		"@prisma/client": "^4.15.0"
+		"@prisma/client": "^4.16.2"
 	},
 	"devDependencies": {
 		"@types/node": "^18.15.11",
 		"dotenv": "^16.0.3",
-		"prisma": "^4.15.0",
+		"prisma": "^4.16.2",
 		"typescript": "^5.0.4"
 	},
 	"packageManager": "yarn@1.22.19"
