@@ -4,10 +4,6 @@ export const fetcher = async (input: RequestInfo, init?: RequestInit) => {
 	return res.json();
 };
 
-export const isMobile =
-	typeof window !== "undefined"
-	&& window.matchMedia("only screen and (max-width: 768px)").matches;
-
 export const isTruncated =
 	(element?: HTMLElement) =>
 		element && (element.offsetWidth < element.scrollWidth);
@@ -35,3 +31,7 @@ export const sendRequest = async <ResponseData>({
 		return { error: e as Error };
 	}
 };
+
+export const booleanToString = (value: boolean) => JSON.stringify(value);
+
+export const booleanFromString = (value: string | undefined | null) => value?.toLocaleLowerCase() === "true" || value === "1";

@@ -1,19 +1,25 @@
-import { Flex, Image, useColorModeValue } from "@chakra-ui/react";
+import { CodeboardsLogo } from "@/components/Icons";
+import { Flex, Text, useColorModeValue } from "@chakra-ui/react";
+import NextLink from "next/link";
 
 export const SidebarLogo = () => {
 	return (
 		<Flex
-			height="12"
+			as={NextLink}
+			href={"/"}
 			alignItems={"center"}
-			paddingX={3.5}
-			borderBottom="1px"
-			borderColor="inherit"
+			gap={2}
 		>
-			<Image
-				src={useColorModeValue("/images/logo/default-vertical.png", "/images/logo/default-light-vertical.png")}
-				width="36"
-				alt="Codeboards logo"
-			/>
-		</Flex>
+			<CodeboardsLogo fontSize={"larger"} />
+			<Text
+				_selection={{ bg: "unset", color: "unset" }}
+				fontSize={"xl"}
+				fontWeight={"bold"}
+				lineHeight={"0"}
+				color={useColorModeValue("gray.600", "gray.200")}
+			>
+				codeboards
+			</Text>
+		</Flex >
 	);
 };

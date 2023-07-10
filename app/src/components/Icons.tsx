@@ -14,6 +14,23 @@ export const ExternalLinkIcon = (props: IconProps) => (
 	</Icon>
 );
 
+export const CodeboardsLogo = (props: IconProps) => (
+	<Icon viewBox="0 0 160 160" {...svgIconBaseProps} {...props}>
+		<rect opacity="0.63" width="128.351" height="126.517" rx="27.6757" fill="#6875FF" />
+		<rect x="31.649" y="33.4825" width="128.351" height="126.517" rx="27.6757" fill="url(#paint0_linear_293_71)" />
+		<path d="M82.7142 60H122.714" stroke="#E8E7ED" strokeWidth="10" strokeLinecap="round" />
+		<path d="M82.7142 82.4999H137.714" stroke="#E8E7ED" strokeWidth="10" strokeLinecap="round" />
+		<path d="M82.7142 107.5H137.714" stroke="#E8E7ED" strokeWidth="10" strokeLinecap="round" />
+		<path d="M55.2142 58.7498H65.2142" stroke="#E8E7ED" strokeWidth="7.5" strokeLinecap="round" />
+		<defs>
+			<linearGradient id="paint0_linear_293_71" x1="148.964" y1="155" x2="42.7143" y2="37.4999" gradientUnits="userSpaceOnUse">
+				<stop stopColor="#4126E7" />
+				<stop offset="1" stopColor="#2D1C9F" />
+			</linearGradient>
+		</defs>
+	</Icon>
+);
+
 export const GoogleLogo = (props: IconProps) => (
 	<Icon viewBox="0 0 256 262" {...svgIconBaseProps} {...props}>
 		<path fill="#4285F4" d="M255.878 133.451c0-10.734-.871-18.567-2.756-26.69H130.55v48.448h71.947c-1.45 12.04-9.283 30.172-26.69 42.356l-.244 1.622l38.755 30.023l2.685.268c24.659-22.774 38.875-56.282 38.875-96.027" />
@@ -66,22 +83,34 @@ export const KanbanBoardIcon = (props: IconProps) => (
 	</Icon>
 );
 
-export const AngleDownIcon = (props: IconProps) => (
+export const ChevronDownIcon = (props: IconProps) => (
 	<Icon viewBox="0 0 24 24" {...svgIconBaseProps} {...props}>
 		{/* <path d="m6 9l6 6l6-6" /> TablerIcons */}
 		<path d="m19.5 8.25l-7.5 7.5l-7.5-7.5" /> {/* HereIcons heroicons:chevron-down */}
 	</Icon>
 );
 
-export const AngleRightIcon = (props: IconProps) => (
+export const ChevronRightIcon = (props: IconProps) => (
 	<Icon viewBox="0 0 24 24" {...svgIconBaseProps} {...props}>
 		<path d="m8.25 4.5l7.5 7.5l-7.5 7.5" />
 	</Icon>
 );
 
-export const DoubleAngleRightIcon = (props: IconProps) => (
+export const DoubleChevronRightIcon = (props: IconProps) => (
 	<Icon viewBox="0 0 24 24" {...svgIconBaseProps} {...props}>
 		<path d="m7 7l5 5l-5 5m6-10l5 5l-5 5" />
+	</Icon>
+);
+
+export const DoubleChevronLeftIcon = (props: IconProps) => (
+	<Icon viewBox="0 0 24 24" {...svgIconBaseProps} {...props}>
+		<path d="m11 7l-5 5l5 5m6-10l-5 5l5 5" />
+	</Icon>
+);
+
+export const HamburgerMenuIcon = (props: IconProps) => (
+	<Icon viewBox="0 0 24 24" {...svgIconBaseProps} {...props}>
+		<path d="M4 6h16M4 12h16M4 18h16" />
 	</Icon>
 );
 

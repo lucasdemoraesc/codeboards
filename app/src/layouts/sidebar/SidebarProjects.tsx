@@ -1,11 +1,10 @@
 import { Project } from ".prisma/client";
 import { Clickable } from "@/components/Clickable";
-import { AngleRightIcon, DotIcon } from "@/components/Icons";
+import { ChevronRightIcon, DotIcon } from "@/components/Icons";
 import { Board } from "@codeboards/prisma";
 import React from "react";
 import { SidebarAddItem } from "./components/SidebarAddItem";
 import { SidebarItem } from "./components/SidebarItem";
-import { SidebarItemsContainer } from "./components/SidebarItemsContainer";
 import { SidebarItemsEmpty } from "./components/SidebarItemsEmpty";
 import { SidebarItemsSkeleton } from "./components/SidebarItemsSkeleton";
 
@@ -22,7 +21,7 @@ export const SidebarProjects = ({
 }) => {
 
 	return (
-		<SidebarItemsContainer>
+		<>
 			<SidebarItemsSkeleton numberOfItems={2} isLoading={isLoading}>
 				<SidebarAddItem
 					title="Projects"
@@ -41,7 +40,7 @@ export const SidebarProjects = ({
 									marginLeft={"-1"}
 									onClick={() => undefined}
 								>
-									<AngleRightIcon />
+									<ChevronRightIcon />
 								</Clickable>
 							}
 						></SidebarItem>
@@ -59,6 +58,6 @@ export const SidebarProjects = ({
 					</React.Fragment>
 				)) : <SidebarItemsEmpty itemType="projects" onAdd={() => undefined} />}
 			</SidebarItemsSkeleton>
-		</SidebarItemsContainer>
+		</>
 	);
 };

@@ -13,6 +13,14 @@ export default function Document() {
 				<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet" />
 			</Head>
 			<body>
+				{/* TIPS: Loader global, para habilitar basta descomentar este trecho, o useEffect do arquivo DefaultLayout.tsx e o import do global.css em _app.tsx */}
+				{/* <div id="globalLoader">
+					<div id="loader" className="three-body">
+						<div className="three-body__dot"></div>
+						<div className="three-body__dot"></div>
+						<div className="three-body__dot"></div>
+					</div>
+				</div> */}
 				<ColorModeScript initialColorMode={customTheme.config.initialColorMode} />
 				<Main />
 				<NextScript />

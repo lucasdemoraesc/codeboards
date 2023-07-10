@@ -212,7 +212,19 @@ const styles = {
 		},
 		body: {
 			bg: mode("white", "gray.900")(props),
-			color: mode("gray.600", "gray.300")(props)
+			color: mode("gray.600", "gray.300")(props),
+			overflow: "hidden"
+		},
+		"::-webkit-scrollbar": {
+			background: "transparent",
+			width: "8px"
+		},
+		"::-webkit-scrollbar-thumb": {
+			background: mode("gray.300", "gray.600")(props),
+			borderRadius: "4px"
+		},
+		"::-webkit-scrollbar-track": {
+			background: mode("gray.100", "gray.800")(props)
 		},
 		"h1, h2, h3, h4, h5, h6": {
 			color: mode("gray.700", "gray.200")(props)

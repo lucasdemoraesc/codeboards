@@ -2,7 +2,6 @@ import { Board } from ".prisma/client";
 import { KanbanBoardIcon } from "@/components/Icons";
 import { SidebarAddItem } from "./components/SidebarAddItem";
 import { SidebarItem } from "./components/SidebarItem";
-import { SidebarItemsContainer } from "./components/SidebarItemsContainer";
 import { SidebarItemsEmpty } from "./components/SidebarItemsEmpty";
 import { SidebarItemsSkeleton } from "./components/SidebarItemsSkeleton";
 
@@ -15,7 +14,7 @@ export const SidebarBoards = ({
 }) => {
 
 	return (
-		<SidebarItemsContainer>
+		<>
 			<SidebarItemsSkeleton isLoading={isLoading}>
 				<SidebarAddItem
 					title="Boards"
@@ -32,6 +31,6 @@ export const SidebarBoards = ({
 					></SidebarItem>
 				)) : <SidebarItemsEmpty itemType="boards" onAdd={() => undefined} />}
 			</SidebarItemsSkeleton>
-		</SidebarItemsContainer>
+		</>
 	);
 };
