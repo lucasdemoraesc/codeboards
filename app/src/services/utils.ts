@@ -4,10 +4,6 @@ export const fetcher = async (input: RequestInfo, init?: RequestInit) => {
 	return res.json();
 };
 
-export const isTruncated =
-	(element?: HTMLElement) =>
-		element && (element.offsetWidth < element.scrollWidth);
-
 export const sendRequest = async <ResponseData>({
 	url,
 	method,
@@ -32,6 +28,34 @@ export const sendRequest = async <ResponseData>({
 		console.error(e);
 		return { error: e as Error };
 	}
+};
+
+export const isTruncated =
+	(element?: HTMLElement) =>
+		element && (element.offsetWidth < element.scrollWidth);
+
+const isVariableString = (str: string): boolean => /^\{\{.*\}\}$/.test(str);
+
+export const sanitizeInputString = (unsafe?: string) => {
+	if (!unsafe)
+		return undefined;
+
+	return String(unsafe)
+		.replace(/&/g, "&amp;")
+		.replace(/</g, "&lt;")
+		.replace(/>/g, "&gt;")
+		.replace(/"/g, "&quot;")
+		.replace(/'/g, "&#039;");
+};
+
+export const sanitizeUrl = (url: string): string => {
+	return url.startsWith("http") ||
+		url.startsWith("mailto:") ||
+		url.startsWith("tel:") ||
+		url.startsWith("sms:") ||
+		isVariableString(url)
+		? url
+		: `https://${url}`;
 };
 
 export const booleanToString = (value: boolean) => JSON.stringify(value);

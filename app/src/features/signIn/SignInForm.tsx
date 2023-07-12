@@ -1,3 +1,4 @@
+import { sanitizeInputString } from "@/services/utils";
 import {
 	Spinner,
 	Stack,
@@ -24,7 +25,7 @@ export const SignInForm = () => {
 
 	useEffect(() => {
 		if (status === "authenticated") {
-			router.replace(router.query.callbackUrl?.toString() ?? "/");
+			router.replace(sanitizeInputString(router.query.callbackUrl?.toString()) ?? "/");
 			return;
 		}
 		(async () => {
