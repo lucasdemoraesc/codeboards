@@ -7,7 +7,7 @@ import { ReactElement, ReactNode, useEffect, useState } from "react";
 import { Sidebar } from "./sidebar/Sidebar";
 import { Topbar } from "./topbar/Topbar";
 
-const localStorageSidebarClosedKey = "sidebarClosed";
+export const localStorageSidebarClosedKey = "sidebarClosed";
 
 export default function DefaultLayout(children: ReactElement): ReactNode {
 
@@ -16,9 +16,9 @@ export default function DefaultLayout(children: ReactElement): ReactNode {
 	const [isSidebarClosed, _setIsSidebarClosed] = useState<boolean | undefined>();
 	const toast = useToast();
 
-	const setIsSidebarClosed = (value: boolean) => {
-		_setIsSidebarClosed(value);
-		setSidebarLeftPosition(value ? sidebarWidth * -1 : 0);
+	const setIsSidebarClosed = (_isSidebarClosed: boolean) => {
+		_setIsSidebarClosed(_isSidebarClosed);
+		setSidebarLeftPosition(_isSidebarClosed ? sidebarWidth * -1 : 0);
 	};
 
 	useDeviceDetect((isMobile) => {
@@ -31,9 +31,18 @@ export default function DefaultLayout(children: ReactElement): ReactNode {
 		setIsSidebarClosed(_isClosed);
 	}, []);
 
-	const toggleSidebar = () => {
-		localStorage.setItem(localStorageSidebarClosedKey, booleanToString(!isSidebarClosed));
-		setIsSidebarClosed(!isSidebarClosed);
+	const toggleSidebar = (waitToClose = false) => {
+		const _isSidebarClosed = !isSidebarClosed;
+		localStorage.setItem(localStorageSidebarClosedKey, booleanToString(_isSidebarClosed));
+		if (!waitToClose)
+			setIsSidebarClosed(_isSidebarClosed);
+		else {
+			_setIsSidebarClosed(_isSidebarClosed);
+			window.addEventListener("mousemove", () => {
+				if (booleanFromString(localStorage.getItem(localStorageSidebarClosedKey)))
+					setSidebarLeftPosition(sidebarWidth * -1);
+			}, { once: true });
+		}
 	};
 
 	const onError = (error: Error) => {
@@ -70,36 +79,45 @@ export default function DefaultLayout(children: ReactElement): ReactNode {
 	// }, [isLoadingBoards, isLoadingProjects]);
 
 	return (
-		<Flex>
-			<Sidebar
-				projects={projects}
-				isLoadingProjects={isLoadingProjects}
-				boards={boards}
-				isLoadingBoards={isLoadingBoards}
-				width={sidebarWidth}
-				leftPosition={sidebarLeftPosition}
-				setLeftPosition={setSidebarLeftPosition}
-				isClosed={isSidebarClosed}
-				onToggle={toggleSidebar}
-			/>
-			<Flex
-				direction="column"
-				height="100vh"
-				width="100%"
-			>
-				<Topbar
-					showSidebarToggleButton={isSidebarClosed}
-					onToggleSidebar={toggleSidebar}
-					onHoverToggleSidebarButton={() => setSidebarLeftPosition(0)}
-					onUnhoverToggleSidebarButton={() => setSidebarLeftPosition(sidebarWidth * -1)}
-				/>
-				<chakra.main
-					height="100%"
-					overflow={"auto"}
-				>
-					{children}
-				</chakra.main>
-			</Flex>
-		</Flex>
+		(typeof isSidebarClosed === "undefined" ? <></> :
+			<>
+				<Flex>
+					<Sidebar
+						projects={projects}
+						isLoadingProjects={isLoadingProjects}
+						boards={boards}
+						isLoadingBoards={isLoadingBoards}
+						width={sidebarWidth}
+						leftPosition={sidebarLeftPosition}
+						setLeftPosition={setSidebarLeftPosition}
+						isClosed={isSidebarClosed}
+						onToggle={toggleSidebar}
+					/>
+					<Flex
+						width={"100%"}
+						height="100vh"
+						marginLeft={isSidebarClosed ? (sidebarWidth * -1) + "px" : 0}
+						direction="column"
+						transitionProperty={"margin-left"}
+						transitionDuration={"normal"}
+						transitionTimingFunction={"ease-in-out"}
+					>
+						<Topbar
+							showSidebarToggleButton={isSidebarClosed}
+							onToggleSidebar={toggleSidebar}
+							onHoverToggleSidebarButton={() => setSidebarLeftPosition(0)}
+							onUnhoverToggleSidebarButton={() => setSidebarLeftPosition(sidebarWidth * -1)}
+							sidebarHovered={sidebarLeftPosition === 0}
+						/>
+						<chakra.main
+							height="100%"
+							overflow={"auto"}
+						>
+							{children}
+						</chakra.main>
+					</Flex>
+				</Flex>
+			</>
+		)
 	);
 }

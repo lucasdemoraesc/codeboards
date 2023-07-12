@@ -10,9 +10,12 @@ const withAuth =
 			const { status } = useSession();
 
 			useEffect(() => {
-				if (!router.isReady) return;
-				if (status === "loading") return;
-				if (status === "unauthenticated") router.replace("/signin");
+				if (!router.isReady)
+					return;
+				if (status === "loading")
+					return;
+				if (status === "unauthenticated")
+					router.replace("/signin");
 			}, [status, router]);
 
 			return <WrappedComponent {...props} />;

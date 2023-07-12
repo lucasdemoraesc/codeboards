@@ -9,6 +9,7 @@ import {
 import {
 	StyleFunctionProps,
 	createMultiStyleConfigHelpers,
+	defineStyle,
 	defineStyleConfig,
 	extendTheme,
 	type ThemeConfig
@@ -97,7 +98,8 @@ const Button = defineStyleConfig({
 	}),
 	variants: {
 		solid: ({ colorMode, colorScheme }) => {
-			if (colorScheme !== "blue") return {};
+			if (colorScheme !== "blue")
+				return {};
 			return {
 				bg: colorMode === "dark" ? "blue.400" : "blue.500",
 				color: "white",
@@ -129,7 +131,8 @@ const Alert = createMultiStyleConfigHelpers(
 ).defineMultiStyleConfig({
 	variants: {
 		subtle: ({ colorScheme, colorMode }) => {
-			if (colorScheme !== "blue" || colorMode === "dark") return {};
+			if (colorScheme !== "blue" || colorMode === "dark")
+				return {};
 			return {
 				container: {
 					bg: "blue.50"
@@ -189,16 +192,13 @@ const components = {
 			_hover: { textDecoration: "none" }
 		}
 	},
-	Tooltip: {
-		baseStyle: {
+	Tooltip: defineStyleConfig({
+		baseStyle: defineStyle(({ colorMode }) => ({
 			rounded: "md",
-			fontSize: "xs"
-		},
-		defaultProps: {
-			openDelay: 200,
-			placement: "auto"
-		}
-	}
+			fontSize: "xs",
+			backgroundColor: colorMode === "light" ? "gray.800" : "gray.100"
+		}))
+	})
 };
 
 const styles = {

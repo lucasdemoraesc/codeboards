@@ -32,7 +32,9 @@ export const SidebarItem = (props: {
 			paddingRight={3}
 			paddingY={1.5}
 			borderRadius={"base"}
-			transition="background-color .2s ease"
+			transitionProperty={"background-color"}
+			transitionDuration={"normal"}
+			transitionTimingFunction={"ease-in-out"}
 			onClick={onClick}
 			_hover={{
 				backgroundColor: useColorModeValue("gray.100", "whiteAlpha.200")
@@ -40,7 +42,6 @@ export const SidebarItem = (props: {
 			_active={{
 				backgroundColor: useColorModeValue("gray.200", "whiteAlpha.300")
 			}}
-		// TODO: Não disparar o :active ao clicar em um elemento filho
 		>
 			{icon}
 			<Text

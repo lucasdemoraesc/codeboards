@@ -4,7 +4,8 @@ export default function useDeviceDetect(callback?: (isMobile: boolean) => void) 
 	const [isMobile, setIsMobile] = useState<boolean | undefined>(undefined);
 
 	useEffect(() => {
-		if (!window) return;
+		if (!window)
+			return;
 
 		const handleWindowSizeChange = () => {
 			setIsMobile(window.innerWidth <= 768);

@@ -13,7 +13,8 @@ export const useBoards = ({
 }) => {
 	const params = new URLSearchParams(projectId ? { projectId: projectId.toString() } : undefined);
 	const { data, error, mutate } = useSWR<{ boards: Board[]; }, Error>(`/api/boards?${params}`, fetcher);
-	if (error) onError(error);
+	if (error)
+		onError(error);
 	return {
 		boards: data?.boards,
 		isLoading: !error && !data,
@@ -30,7 +31,8 @@ export const useBoardContent = ({
 }) => {
 
 	const { data, error, mutate } = useSWR<{ board: Board; }, Error>(`/api/boards/${boardId}`, fetcher);
-	if (error) onError(error);
+	if (error)
+		onError(error);
 
 	return {
 		board: data?.board,

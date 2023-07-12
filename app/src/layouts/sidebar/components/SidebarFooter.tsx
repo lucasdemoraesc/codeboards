@@ -34,7 +34,9 @@ export const SidebarFooter = () => {
 						borderTop="1px"
 						borderColor="inherit"
 						cursor={"pointer"}
-						transition="background-color .2s ease"
+						transitionProperty={"background-color"}
+						transitionDuration={"normal"}
+						transitionTimingFunction={"ease"}
 						_hover={{
 							backgroundColor: currentColorMode === "light" ? "gray.100" : "whiteAlpha.200"
 						}}
@@ -60,8 +62,10 @@ export const SidebarFooter = () => {
 									/>
 									<Text isTruncated>{user?.name || user?.email || "User options"}</Text>
 									<ChevronRightIcon
-										transform={isOpen ? "rotate(-90deg)" : ""}
-										transition={"transform .2s ease-in-out"}
+										transform={isOpen ? "rotate(90deg)" : ""}
+										transitionProperty={"transform"}
+										transitionDuration={"normal"}
+										transitionTimingFunction={"ease-in-out"}
 									/>
 								</>
 							}

@@ -24,7 +24,9 @@ module.exports = {
 	},
 	plugins: ["react", "@typescript-eslint"],
 	rules: {
-		"indent": ["error", "tab", { "SwitchCase": 1 }],
+		"indent": ["error", "tab", { "SwitchCase": 1, "ImportDeclaration": 1 }],
+		"brace-style": ["error", "stroustrup"],
+		"nonblock-statement-body-position": ["error", "below"],
 		"linebreak-style": ["error", "unix"],
 		"quotes": ["warn", "double"],
 		"semi": ["error", "always"],

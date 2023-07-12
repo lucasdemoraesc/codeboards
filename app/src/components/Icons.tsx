@@ -85,8 +85,15 @@ export const KanbanBoardIcon = (props: IconProps) => (
 
 export const ChevronDownIcon = (props: IconProps) => (
 	<Icon viewBox="0 0 24 24" {...svgIconBaseProps} {...props}>
-		{/* <path d="m6 9l6 6l6-6" /> TablerIcons */}
-		<path d="m19.5 8.25l-7.5 7.5l-7.5-7.5" /> {/* HereIcons heroicons:chevron-down */}
+		{/* HereIcons heroicons:chevron-down */}
+		<path d="m19.5 8.25l-7.5 7.5l-7.5-7.5" />
+	</Icon>
+);
+
+export const ChevronUpIcon = (props: IconProps) => (
+	<Icon viewBox="0 0 24 24" {...svgIconBaseProps} {...props}>
+		{/* HereIcons heroicons:chevron-up */}
+		<path d="m4.5 15.75l7.5-7.5l7.5 7.5" />
 	</Icon>
 );
 

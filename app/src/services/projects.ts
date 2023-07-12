@@ -14,7 +14,8 @@ export const useProjects = ({
 
 	const params = new URLSearchParams(withBoards ? { withBoards: "true" } : undefined);
 	const { data, error, mutate } = useSWR<{ projects: Project[]; }, Error>(`/api/projects?${params}`, fetcher);
-	if (error) onError(error);
+	if (error)
+		onError(error);
 
 	return {
 		projects: data?.projects,
@@ -32,7 +33,8 @@ export const useProjectContent = ({
 }) => {
 
 	const { data, error, mutate } = useSWR<{ project: Project; }, Error>(`api/projects/${projectId}`, fetcher);
-	if (error) onError(error);
+	if (error)
+		onError(error);
 
 	return {
 		project: data?.project,

@@ -1,6 +1,7 @@
 import { Clickable } from "@/components/Clickable";
 import { PlusIcon } from "@/components/Icons";
-import { Box, Flex, Text, Tooltip, useColorModeValue } from "@chakra-ui/react";
+import { TooltipWithLegend } from "@/components/TooltipWithLegend";
+import { Flex, Text } from "@chakra-ui/react";
 
 export const SidebarAddItem = (props: { title: string, itemType: string, onClick: () => void; }) => {
 	const { title, itemType, onClick } = props;
@@ -13,13 +14,14 @@ export const SidebarAddItem = (props: { title: string, itemType: string, onClick
 			paddingRight={1}
 		>
 			<Text fontSize={"xs"}>{title}</Text>
-			<Tooltip
-				label={<Box><Text>Add new {itemType}</Text><Text textColor={useColorModeValue("gray.400", "gray.500")}>(under construction)</Text></Box>}
+			<TooltipWithLegend
+				label={`Add new ${itemType}`}
+				legend="(under construction)"
 			>
 				<Clickable onClick={onClick}>
 					<PlusIcon />
 				</Clickable>
-			</Tooltip>
+			</TooltipWithLegend>
 		</Flex>
 	);
 };

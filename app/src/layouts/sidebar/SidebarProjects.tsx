@@ -37,7 +37,6 @@ export const SidebarProjects = ({
 							label={project.name}
 							icon={
 								<Clickable
-									marginLeft={"-1"}
 									onClick={() => undefined}
 								>
 									<ChevronRightIcon />

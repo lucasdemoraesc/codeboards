@@ -16,8 +16,11 @@ export const Clickable = React.forwardRef((
 			props.onClick?.call(this);
 		}}
 		padding={"1"}
+		margin={"-1"}
 		borderRadius={"md"}
-		transition="background-color .2s ease"
+		transitionProperty={"background-color"}
+		transitionDuration={"normal"}
+		transitionTimingFunction={"ease"}
 		_hover={{
 			backgroundColor: useColorModeValue("gray.200", "whiteAlpha.300")
 		}}

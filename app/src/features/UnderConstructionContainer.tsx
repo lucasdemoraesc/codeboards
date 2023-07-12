@@ -17,6 +17,7 @@ const UnderConstructionContainer = (props: { title: string; }) => {
 				src={"https://cataas.com/cat/gif/says/Under%20development"}
 				fallback={<Spinner size={"xl"} />}
 				alt={title}
+				borderRadius={"md"}
 				width={"96"}
 			></Image>
 			<Heading>{`⏳️ ${title} is under development`}</Heading>

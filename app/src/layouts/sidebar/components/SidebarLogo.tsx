@@ -15,7 +15,6 @@ export const SidebarLogo = () => {
 				_selection={{ bg: "unset", color: "unset" }}
 				fontSize={"xl"}
 				fontWeight={"bold"}
-				lineHeight={"0"}
 				color={useColorModeValue("gray.600", "gray.200")}
 			>
 				codeboards

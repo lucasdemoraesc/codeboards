@@ -1,21 +1,28 @@
 import { Clickable } from "@/components/Clickable";
 import { ColorModeSwicther } from "@/components/ColorModeSwitcher";
 import { DoubleChevronRightIcon, HamburgerMenuIcon, StarIcon, ThreeDotsIcon } from "@/components/Icons";
-import { Badge, Box, HStack, Text, Tooltip, chakra, useColorModeValue } from "@chakra-ui/react";
+import { TooltipWithLegend } from "@/components/TooltipWithLegend";
+import { Badge, HStack, Text, chakra, useColorModeValue } from "@chakra-ui/react";
 import { useState } from "react";
+import { CloseSidebarTooltip } from "../sidebar/components/CloseSidebarTooltip";
 
-export const Topbar = ({
-	showSidebarToggleButton,
-	onToggleSidebar,
-	onHoverToggleSidebarButton,
-	onUnhoverToggleSidebarButton
-}: {
+type TopbarProps = {
 	showSidebarToggleButton?: boolean;
+	sidebarHovered?: boolean;
 	onToggleSidebar?: () => void;
 	onHoverToggleSidebarButton?: () => void;
 	onUnhoverToggleSidebarButton?: () => void;
-}) => {
+};
 
+export const Topbar = (props: TopbarProps) => {
+
+	const {
+		showSidebarToggleButton,
+		sidebarHovered,
+		onToggleSidebar,
+		onHoverToggleSidebarButton,
+		onUnhoverToggleSidebarButton
+	} = props;
 	const [hamburgerMenuHovered, setHamburgerMenuHovered] = useState(false);
 
 	return (
@@ -27,49 +34,52 @@ export const Topbar = ({
 			justifyContent="space-between"
 			borderColor={useColorModeValue("gray.200", "gray.700")}
 		>
+			{showSidebarToggleButton &&
+				<chakra.div
+					position={"fixed"}
+					top={0}
+					left={4}
+					width={"7"}
+					height={16}
+					onMouseOut={() => onUnhoverToggleSidebarButton && onUnhoverToggleSidebarButton()}
+				/>
+			}
 			<HStack>
 				{showSidebarToggleButton &&
-					<>
-						<chakra.div
-							position={"fixed"}
-							top={0}
-							left={0}
-							width={14}
-							height={16}
-							onMouseLeave={() => onUnhoverToggleSidebarButton && onUnhoverToggleSidebarButton()}
+					<CloseSidebarTooltip closed={showSidebarToggleButton}>
+						<Clickable
+							onMouseOver={() => {
+								setHamburgerMenuHovered(true);
+								onHoverToggleSidebarButton && onHoverToggleSidebarButton();
+							}}
+							onMouseOut={() => setHamburgerMenuHovered(false)}
+							onClick={() => {
+								if (onToggleSidebar) {
+									onToggleSidebar();
+									setHamburgerMenuHovered(false);
+								}
+							}}
 						>
-						</chakra.div>
-						<Tooltip label={"Lock sidebar open"} placement="auto">
-							<Clickable
-								onMouseEnter={() => {
-									setHamburgerMenuHovered(true);
-									onHoverToggleSidebarButton && onHoverToggleSidebarButton();
-								}}
-								onMouseLeave={() => setHamburgerMenuHovered(false)}
-								onClick={() => {
-									if (onToggleSidebar) {
-										onToggleSidebar();
-										setHamburgerMenuHovered(false);
-									}
-								}}
-							>
-								<HamburgerMenuIcon
-									fontSize={"xl"}
-									opacity={hamburgerMenuHovered ? 0 : 1}
-									transition={"opacity .2s ease-in-out"}
-								/>
-								<DoubleChevronRightIcon
-									fontSize={"xl"}
-									marginLeft={"-5"}
-									opacity={!hamburgerMenuHovered ? 0 : 1}
-									transition={"opacity .2s ease-in-out"}
-								/>
-							</Clickable>
-						</Tooltip>
-					</>
+							<HamburgerMenuIcon
+								fontSize={"xl"}
+								opacity={!hamburgerMenuHovered && !sidebarHovered ? 1 : 0}
+								transitionProperty={"opacity"}
+								transitionDuration={"normal"}
+								transitionTimingFunction={"ease-in-out"}
+							/>
+							<DoubleChevronRightIcon
+								fontSize={"xl"}
+								marginLeft={"-5"}
+								opacity={hamburgerMenuHovered || sidebarHovered ? 1 : 0}
+								transitionProperty={"opacity"}
+								transitionDuration={"normal"}
+								transitionTimingFunction={"ease-in-out"}
+							/>
+						</Clickable>
+					</CloseSidebarTooltip>
 				}
 				<Badge colorScheme='blue'>Project</Badge>
-				<Text lineHeight={"none"}>Development roadmap</Text>
+				<Text>Development roadmap</Text>
 			</HStack>
 
 			<HStack>
@@ -77,33 +87,30 @@ export const Topbar = ({
 					fontSize={"xs"}
 					color={"gray.400"}
 					fontWeight={"semibold"}
-					lineHeight={0}
 				>
 					Edited jun 22
 				</Text>
-				<Tooltip
-					aria-label="Add to favorites"
-					label={<Box><Text>Add to favorites</Text><Text textColor={useColorModeValue("gray.400", "gray.500")}>(under construction)</Text></Box>}
-					placement="bottom"
+				<TooltipWithLegend
+					label="Add to favorites"
+					legend="(under construction)"
 				>
 					<Clickable>
 						<StarIcon fontSize={"larger"} />
 					</Clickable>
-				</Tooltip>
+				</TooltipWithLegend>
 				<ColorModeSwicther
 					showTooltip
 					tooltipPosition="bottom"
 					size={"larger"}
 				/>
-				<Tooltip
-					aria-label="More options"
-					label={<Box><Text>More options</Text><Text textColor={useColorModeValue("gray.400", "gray.500")}>(under construction)</Text></Box>}
-					placement="bottom"
+				<TooltipWithLegend
+					label="More options"
+					legend="(under construction)"
 				>
 					<Clickable>
 						<ThreeDotsIcon fontSize={"larger"} />
 					</Clickable>
-				</Tooltip>
+				</TooltipWithLegend>
 			</HStack>
 		</chakra.nav>
 	);

@@ -23,10 +23,12 @@ export const sendRequest = async <ResponseData>({
 			mode: "cors",
 			body: body ? JSON.stringify(body) : undefined
 		});
-		if (!response.ok) throw new Error(response.statusText);
+		if (!response.ok)
+			throw new Error(response.statusText);
 		const data = await response.json();
 		return { data };
-	} catch (e) {
+	}
+	catch (e) {
 		console.error(e);
 		return { error: e as Error };
 	}
